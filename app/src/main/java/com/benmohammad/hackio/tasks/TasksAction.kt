@@ -7,7 +7,7 @@ sealed class TasksAction: MviAction {
 
     data class LoadTasksAction(
         val forceUpdate: Boolean ,
-        val filterType: TasksFilterType
+        val filterType: TasksFilterType?
     ): TasksAction()
 
     data class ActivateTaskAction(val task: Task): TasksAction()
