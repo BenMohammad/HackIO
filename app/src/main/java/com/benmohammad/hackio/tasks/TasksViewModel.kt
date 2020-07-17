@@ -1,10 +1,8 @@
 package com.benmohammad.hackio.tasks
 
-import android.app.TaskInfo
 import androidx.lifecycle.ViewModel
 import com.benmohammad.hackio.data.Task
 import com.benmohammad.hackio.mvibase.MviViewModel
-import com.benmohammad.hackio.tasks.TasksResult.CompleteTaskResult.Failure
 import com.benmohammad.hackio.tasks.TasksResult.LoadTaskResult
 import com.benmohammad.hackio.tasks.TasksViewState.UiNotification.*
 import com.benmohammad.hackio.util.notOfType
@@ -13,7 +11,6 @@ import io.reactivex.ObservableTransformer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
 import io.reactivex.subjects.PublishSubject
-import kotlin.concurrent.timerTask
 
 class TasksViewModel(
     private val actionProcessorHolder: TasksActionProcessorHolder)

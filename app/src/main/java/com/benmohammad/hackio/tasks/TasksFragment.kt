@@ -176,6 +176,7 @@ class TasksFragment: Fragment(),  MviView<TasksIntent, TasksViewState> {
             }
             true
         }
+        popup.show()
     }
 
     private fun showMessage(message: String) {

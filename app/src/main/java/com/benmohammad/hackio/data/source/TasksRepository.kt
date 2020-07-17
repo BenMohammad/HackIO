@@ -41,7 +41,8 @@ open class TasksRepository private constructor(
     override fun getTasks(): Single<List<Task>> {
         if(cachedTasks != null && !cacheIsDirty) {
             return Observable.fromIterable(cachedTasks!!.values).toList()
-        } else {
+        } else if(cachedTasks == null){
+
             cachedTasks = LinkedHashMap()
         }
 
@@ -97,10 +98,12 @@ open class TasksRepository private constructor(
         tasksRemoteDataSource.completeTask(task)
         tasksLocalDataSource.completeTask(task)
 
+        val completedTask = Task(title = task.title!!, description = task.description, id = task.id, completed = true)
+
         if(cachedTasks == null) {
            cachedTasks = LinkedHashMap()
         }
-        cachedTasks!!.put(task.id, task)
+        cachedTasks!!.put(task.id, completedTask)
         return Completable.complete()
     }
 

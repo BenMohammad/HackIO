@@ -50,15 +50,13 @@ class TasksAdapter(tasks: List<Task>): BaseAdapter() {
         if (task.completed) {
             ViewCompat.setBackground(
                 rowView,
-                ContextCompat.getDrawable(parent.context, R.drawable.list_completed_touch_feedback)
-            )
+                ContextCompat.getDrawable(parent.context, R.drawable.list_completed_touch_feedback))
         } else {
             ViewCompat.setBackground(
                 rowView,
-                ContextCompat.getDrawable(parent.context, R.drawable.touchfeedback)
-            )
+                ContextCompat.getDrawable(parent.context, R.drawable.touchfeedback))
         }
-            completeCB.setOnClickListener { taskToggleSubject.onNext(task) }
+        completeCB.setOnClickListener { taskToggleSubject.onNext(task) }
 
         rowView.setOnClickListener { taskClickSubject.onNext(task) }
         return rowView
