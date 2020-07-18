@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.benmohammad.hackio.Injection.Injection
+import com.benmohammad.hackio.addedittask.AddEditTaskActionProcessorHolder
+import com.benmohammad.hackio.addedittask.AddEditTaskViewModel
 import com.benmohammad.hackio.taskdetail.TaskDetailActionProcessorHolder
 import com.benmohammad.hackio.taskdetail.TaskDetailViewModel
 import com.benmohammad.hackio.tasks.TasksActionProcessorHolder
@@ -25,6 +27,11 @@ class ToDoViewModelFactory private constructor(
                TaskDetailActionProcessorHolder(
                    Injection.provideTaskRepository(applicationContext),
                    Injection.provideSchedulerProvider())) as T
+        } else if(modelClass == AddEditTaskViewModel::class.java) {
+            return AddEditTaskViewModel(
+                AddEditTaskActionProcessorHolder(
+                    Injection.provideTaskRepository(applicationContext),
+                    Injection.provideSchedulerProvider())) as T
         }
         throw IllegalArgumentException("unknown model class "+ modelClass)
     }
