@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.benmohammad.hackio.Injection.Injection
 import com.benmohammad.hackio.addedittask.AddEditTaskActionProcessorHolder
 import com.benmohammad.hackio.addedittask.AddEditTaskViewModel
+import com.benmohammad.hackio.stats.StatisticsActionProcessorHolder
+import com.benmohammad.hackio.stats.StatisticsViewModel
 import com.benmohammad.hackio.taskdetail.TaskDetailActionProcessorHolder
 import com.benmohammad.hackio.taskdetail.TaskDetailViewModel
 import com.benmohammad.hackio.tasks.TasksActionProcessorHolder
@@ -30,6 +32,11 @@ class ToDoViewModelFactory private constructor(
         } else if(modelClass == AddEditTaskViewModel::class.java) {
             return AddEditTaskViewModel(
                 AddEditTaskActionProcessorHolder(
+                    Injection.provideTaskRepository(applicationContext),
+                    Injection.provideSchedulerProvider())) as T
+        } else {
+            return StatisticsViewModel(
+                StatisticsActionProcessorHolder(
                     Injection.provideTaskRepository(applicationContext),
                     Injection.provideSchedulerProvider())) as T
         }

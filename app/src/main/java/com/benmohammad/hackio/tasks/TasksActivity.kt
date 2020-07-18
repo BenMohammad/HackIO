@@ -55,7 +55,7 @@ class TasksActivity: AppCompatActivity() {
             }
 
             R.id.statistics_navigation_menu_item -> {
-                val inetnt = Intent(this@TasksActivity, StatisticsActivity::class.java)
+                val intent = Intent(this@TasksActivity, StatisticsActivity::class.java)
                 startActivity(intent)
 
         }else -> {
